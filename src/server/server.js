@@ -57,8 +57,8 @@ const renderFullPage = (html, initialState) => {
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
-        <script src="/vender.js"></script>
-        <script src="/index.js"></script>
+        <script src="/js/vender.js"></script>
+        <script src="/js/index.js"></script>
       </body>
     </html>
   `;
@@ -135,7 +135,7 @@ app.get('/*', function(req, res) {
 });
 
 const server = app.listen(3002, () => {
-  console.log('app listening at:3002'.info);
+  console.log('App listening at:3002'.info);
   open('http://localhost:3002')
 });
 

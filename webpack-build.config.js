@@ -4,23 +4,12 @@
  * @date    2016-07-20 20:41:41
  * @version $Id$
  */
-
-/**
- *
- * @authors jachin (zx.wang@ctrip.com)
- * @date    2016-05-24 17:11:32
- * @describe
- * @version $Id$
- */
-
 'use strict';
 
 const path = require('path');
 const fs = require('fs');
-
 const webpack = require('webpack');
 const glob = require('glob');
-
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
@@ -48,11 +37,8 @@ let chunks = Object.keys(entries);
 module.exports = (options) => {
   options = options || {};
 
-  //let dev = options.dev !== undefined ? options.dev : true;
   let dev = (process.env.NODE_ENV === 'production' || options.dev !== undefined) ? false : true;
   //publicPath是绝对路径
-  //release模式可以在publicPath前加"."，开发模式不能加，否则有bug，这是sass-loader的bug。
-  //dev模式的时候去掉点".",发布版本是添加".";
   let publicPath = '/';
   let extractCSS;
   let cssLoader;
@@ -108,9 +94,9 @@ module.exports = (options) => {
 
     output: {
       path: dist,
-      filename: '[name].js',
-      chunkFilename: 'chunk.js',
-      hotUpdateChunkFilename: '[id].js',
+      filename: 'js/[name].js',
+      chunkFilename: 'js/chunk.js',
+      hotUpdateChunkFilename: 'js/[id].js',
       publicPath: publicPath
     },
 
