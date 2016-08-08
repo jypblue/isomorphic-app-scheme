@@ -147,7 +147,7 @@ module.exports = (options) => {
       //可以自主添加提取公共部分，拆分包以免包过大
       new CommonsChunkPlugin({
         name: 'vender',
-        chunks: ['index']
+        chunks: ['App', 'CounterPage', 'TodoPage']
       })
 
     ].concat(plugins),

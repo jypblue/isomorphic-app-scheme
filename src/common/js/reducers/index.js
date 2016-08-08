@@ -12,6 +12,7 @@ import counter from './counter';
 import layout from './layout';
 import todos from './todos';
 import version from './version';
+import realworld from './realworld';
 
 const rootReducer = combineReducers({
   user: user,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   counter: undoable(counter),
   layout: undoable(layout),
   todos: undoable(todos),
+  realworld: realworld,
   routing: routerReducer
 });
 

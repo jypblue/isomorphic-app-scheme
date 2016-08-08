@@ -4,8 +4,8 @@
 express后端同构渲染react-redux代码组件，使用react-router-redux作为应用的前端路由，采用蚂蚁金服的antd作为ui组件，redux-devtools调试模块也整合进来了。本工程可以作为小的web项目方案使用，只需在工程中自己添加业务页面就ok了。
 
 ### 环境要求
-- node 4.0以上
-- history 2.0
+- node 6.0以上
+- history 2.x
 
 ### 技术栈
 - React
@@ -45,10 +45,10 @@ npm run build
 
 ### 项目目录结构
 ```
-├── gulpfile.js               		# gulp任务配置
-├── package.json              		# 项目配置
-├── README.md                 		# 项目说明
-├── src								# 项目目录
+├── gulpfile.js               # gulp任务配置
+├── package.json              # 项目配置
+├── README.md                 # 项目说明
+├── src						   # 项目目录
 │	 ├── server                    # 本地server
 │	 │   ├── index.js              # 本地server入口
 │	 │   ├── server.js             # server渲染文件
@@ -57,7 +57,7 @@ npm run build
 │	 │   ├── fonts/                # 字体文件
 │	 │   ├── img/                  # 图片文件夹
 │	 │   ├── js                    # js&jsx文件夹
-│	 │   │   ├── api/			    # 
+│	 │   │   ├── api/			   	# 
 │	 │   │   ├── action/			# Action Creators文件夹：存放可以触发的action函数
 │	 │   │   ├── components/       # React展示组件文件夹
 │	 │   │   ├── constants/        # Action 大写字符串描述事件

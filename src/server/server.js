@@ -71,10 +71,11 @@ if (dev) {
   let webpackHotMiddleware = require('webpack-hot-middleware');
   let webpackConfig = require('../../webpack-dev.config.js');
   const compiler = webpack(webpackConfig);
-  app.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
-    publicPath: webpackConfig.output.publicPath
-  }));
+  // app.use(webpackDevMiddleware(compiler, {
+  //   noInfo: true,
+  //   publicPath: webpackConfig.output.publicPath
+  // }));
+  app.use(webpackDevMiddleware(compiler, webpackConfig.devServer));
   app.use(webpackHotMiddleware(compiler));
 } else {
   app.use('/', express.static(__dirname + '/../../dist'));
