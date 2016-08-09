@@ -5,12 +5,11 @@
  * @version $Id$
  */
 import express from 'express';
-
 import open from 'open';
 import colors from 'colors';
-let path = require('path');
-let env = process.argv[2] || process.env.NODE_ENV;
-let dev = 'production' !== env;
+const path = require('path');
+const env = process.argv[2] || process.env.NODE_ENV;
+const dev = 'production' !== env;
 
 import React from 'react';
 import {
@@ -40,8 +39,8 @@ import {
 } from '../common/js/api/user';
 import routes from '../common/js/utils/routes';
 
-const app = express();
 
+const app = express();
 const renderFullPage = (html, initialState) => {
   return `
     <!doctype html>
@@ -83,14 +82,10 @@ if (dev) {
 
 
 app.get('/*', function(req, res) {
-
-  //const location = createLocation(req.url);
-
   getUser(user => {
     if (!user) {
       return res.status(401).end('Not Authorised');
     }
-
     const memoryHistory = createMemoryHistory(req.url);
     const store = configureStore(memoryHistory, {
       user: user,
@@ -131,7 +126,6 @@ app.get('/*', function(req, res) {
     });
 
 
-    //-------------------------------------------//华丽丽的分割线
   });
 });
 

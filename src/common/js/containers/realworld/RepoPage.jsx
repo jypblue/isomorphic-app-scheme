@@ -17,7 +17,7 @@ class RepoPage extends Component {
   static propTypes = {
     repo: PropTypes.object,
     fullName: PropTypes.string.isRequired,
-    name:PropTypes.string.isRequired，
+    name:PropTypes.string.isRequired,
     owner:PropTypes.object,
     stargazers:PropTypes.array.isRequired,
     stargazersPagination:PropTypes.object,
@@ -64,9 +64,8 @@ class RepoPage extends Component {
     const {stargazers, stargazersPagination } = this.props;
 
     return (
-      <div>
+      <div className="rl-repo">
         <Repo repo={repo} owner={owner} />
-        <hr/>
         <List renderItem={this.renderUser}
               items={stargazers}
               onLoadMoreClick={this.handleLoadMoreClick}
@@ -79,11 +78,15 @@ class RepoPage extends Component {
 
 
 function mapStateToProps(state) {
-  const {login, name} = state.router.params;
+  //URL为React-Router-Redux模式Url
+  let pathname = state.routing.locationBeforeTransitions.pathname;
+  const login = pathname.substring(11,pathname.lastIndexOf('\/'));
+  const name = pathname.substring(pathname.lastIndexOf('\/')+1);
+  //console.log(login+'-'+name);
   const {
     pagination: {stargazersByRepo},
     entities:{users,repos}
-  } = state;
+  } = state.realworld;
   const fullName = `${login}/${name}`;
   const stargazersPagination = stargazersByRepo[
   fullName] || {ids:[]};

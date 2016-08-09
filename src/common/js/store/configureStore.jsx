@@ -12,6 +12,7 @@ import {
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import promiseMiddleware from '../api/promiseMiddleware';
+import api from '../api/realworldMiddleware';
 import rootReducer from '../reducers';
 import DevTools from '../api/DevTools';
 
@@ -19,7 +20,7 @@ export default function configureStore(history,initialState) {
 
   const middlewareBuilder = () => {
   let middleware = {};
-  let universalMiddleware = [thunk, promiseMiddleware];
+  let universalMiddleware = [thunk, promiseMiddleware, api];
   let allComposeElements = [];
 
   if (process.browser) {

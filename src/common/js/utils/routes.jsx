@@ -14,6 +14,11 @@ import App from "../containers/App";
 import CounterPage from "../containers/CounterPage";
 import TodoPage from "../containers/TodoPage";
 
+//realworld
+import RealWorldPage from '../containers/realworld/RealWorldPage';
+import RepoPage from '../containers/realworld/RepoPage';
+import UserPage from '../containers/realworld/UserPage';
+
 //Redux Dumb
 import HomePage from "../components/Home";
 import AboutPage from "../components/About";
@@ -25,6 +30,12 @@ export default (
       <Route path="home" component={HomePage} />
       <Route path="todo" component={TodoPage} />
       <Route path="counter" component={CounterPage} />
+      <Route path="realworld" component={RealWorldPage}>
+        <Route path="/realworld/:login/:name"
+           component={RepoPage} />
+        <Route path="/realworld/:login"
+           component={UserPage} />
+      </Route>
       <Route path="about" component={AboutPage} />
       <Route path="*" component={error404}/>
   </Route>

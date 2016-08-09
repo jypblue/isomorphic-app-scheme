@@ -5,6 +5,7 @@
  * @version $Id$
  */
 import React, { Component, PropTypes } from 'react';
+import {Button} from 'antd';
 
 class Counter extends Component {
 
@@ -20,9 +21,9 @@ class Counter extends Component {
         <p>
           <b>Counter: {counter} times</b>
           {' '}
-          <button onClick={incrementCounter}>+</button>
+          <Button onClick={incrementCounter}>+</Button>
           {' '}
-          <button onClick={decrementCounter}>-</button>
+          <Button onClick={decrementCounter}>-</Button>
         </p>
       </div>
 

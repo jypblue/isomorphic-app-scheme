@@ -18,6 +18,7 @@ import Sidebar from '../components/layout/Sidebar';
 import { Icon } from 'antd';
 
 class App extends Component {
+
   constructor(props,context) {
     super(props,context);
     this.eventToggleSidebar = this.eventToggleSidebar.bind(this);

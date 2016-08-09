@@ -1,8 +1,8 @@
-/*
- * @Author: jypblue
- * @Date:   2016-08-07 16:43:18
- * @Last Modified by:   jypblue
- * @Last Modified time: 2016-08-08 11:19:45
+/**
+ *
+ * @authors zx.wang (zx.wang1991@gmail.com)
+ * @date    2016-08-09 18:29:25
+ * @version $Id$
  */
 
 'use strict';
@@ -12,7 +12,7 @@ import React, {
 } from 'react';
 import {
   Link
-} from 'React-router';
+} from 'react-router';
 
 export default class User extends Component {
   static propTypes = {
@@ -31,9 +31,9 @@ export default class User extends Component {
     } = this.props.user;
 
     return (
-      <div className="User">
-        <Link to={`/${login}`}>
-          <img src="avatarUrl" width="72" height="72" alt=""/>
+      <div className="user">
+        <Link to={`/realworld/${login}`}>
+          <img src={avatarUrl} width="72" height="72" alt=""/>
           <h3>
           {login} {name && <span>({name})</span>}
           </h3>
@@ -42,3 +42,4 @@ export default class User extends Component {
     )
   }
 }
+

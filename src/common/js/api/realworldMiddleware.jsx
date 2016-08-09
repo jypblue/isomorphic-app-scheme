@@ -14,7 +14,7 @@ import {
 import {
   camelizeKeys
 } from 'humps';
-import fetch from 'isomorphic-fetch';
+import 'isomorphic-fetch';
 
 /**
  * 提取物从GitHub API响应下一页的URL
@@ -43,9 +43,8 @@ const API_ROOT = 'https://api.github.com/';
  */
 function callApi(endpoint, schema) {
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint;
-
   return fetch(fullUrl).then(response =>
-    response.join().then(json => ({
+    response.json().then(json => ({
       json,
       response
     }))
@@ -56,7 +55,7 @@ function callApi(endpoint, schema) {
     }
 
     const camelizedJson = camelizeKeys(json);
-    const nextPageUrl = getNextPageUrl(reponse);
+    const nextPageUrl = getNextPageUrl(response);
 
     return Object.assign({}, normalize(camelizedJson, schema), {
       nextPageUrl
@@ -68,7 +67,7 @@ function callApi(endpoint, schema) {
  * 我们用这个normalizr模式变换API响应从嵌套形式的平面形式，回购和用户放在`实体`，嵌套的JSON对象的ID代替。这是消费的减速器非常方便，因为我们可以很容易地建立一个规范的树并保持更新我们获取更多的数据。
  */
 
-const userSchema = new Schema('user', {
+const userSchema = new Schema('users', {
   idAttribute: 'login'
 });
 

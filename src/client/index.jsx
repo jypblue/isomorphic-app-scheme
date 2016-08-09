@@ -24,7 +24,7 @@ import 'antd/dist/antd.css';
 import '../common/css/core/reset.css';
 import '../common/css/lib/layout.css';
 import '../common/css/ui/todo.css';
-
+import '../common/css/ui/realworld.css';
 
 const initialState = window.__INITIAL_STATE__;
 const store = configureStore(browserHistory,initialState);

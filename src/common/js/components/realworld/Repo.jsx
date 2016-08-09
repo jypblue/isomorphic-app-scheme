@@ -38,11 +38,11 @@ export default class Repo extends Component {
       description
     } = repo;
     return (
-      <div className="Repo">
+      <div className="repo">
         <h3>
-          <Link to={`/${login}/${name}`}>{name}</Link>
-          {'by'}
-          <Link to={`/${login}`}>{login}</Link>
+          <Link to={`/realworld/${login}/${name}`}>{name}</Link>
+          {' by '}
+          <Link to={`/realworld/${login}`}>{login}</Link>
         </h3>
         {description && <p>{description}</p>}
       </div>

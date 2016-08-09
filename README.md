@@ -1,7 +1,7 @@
 ## isomorphic-app-scheme
 利用react、redux、express技术栈搭建的单页应用项目
 
-express后端同构渲染react-redux代码组件，使用react-router-redux作为应用的前端路由，采用蚂蚁金服的antd作为ui组件，redux-devtools调试模块也整合进来了。本工程可以作为小的web项目方案使用，只需在工程中自己添加业务页面就ok了。
+express后端同构渲染react-redux代码组件，使用react-router-redux作为应用的前端路由，采用蚂蚁金服的antd作为ui组件，redux-devtools调试模块。本工程可以作为小的web项目方案使用，只需在工程中自己添加业务页面就ok。
 
 ### 环境要求
 - node 6.0以上
@@ -35,12 +35,16 @@ npm install
 
 ```
 npm run dev
-npm run release
 ```
-4.打包
+4.打包生成release包
 
 ```
 npm run build
+```
+5.运行release版本
+
+```
+npm run release
 ```
 
 ### 项目目录结构
@@ -57,7 +61,7 @@ npm run build
 │	 │   ├── fonts/                # 字体文件
 │	 │   ├── img/                  # 图片文件夹
 │	 │   ├── js                    # js&jsx文件夹
-│	 │   │   ├── api/			   	# 
+│	 │   │   ├── api/			   	# 中间件
 │	 │   │   ├── action/			# Action Creators文件夹：存放可以触发的action函数
 │	 │   │   ├── components/       # React展示组件文件夹
 │	 │   │   ├── constants/        # Action 大写字符串描述事件

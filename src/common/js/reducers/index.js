@@ -14,6 +14,10 @@ import todos from './todos';
 import version from './version';
 import realworld from './realworld';
 
+// entities: realworld.entities,
+// pagination: realworld.pagination,
+// errorMessage: realworld.errorMessage,
+
 const rootReducer = combineReducers({
   user: user,
   version: version,

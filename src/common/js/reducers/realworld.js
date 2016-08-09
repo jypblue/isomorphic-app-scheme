@@ -2,7 +2,7 @@
  * @Author: jypblue
  * @Date:   2016-08-05 13:39:40
  * @Last Modified by:   jypblue
- * @Last Modified time: 2016-08-08 10:50:56
+ * @Last Modified time: 2016-08-09 18:09:29
  */
 
 'use strict';
@@ -18,6 +18,7 @@ function entities(state = {
   users: {},
   repos: {}
 }, action) {
+  //debugger;
   if (action.response && action.response.entities) {
     // statement
     return merge({}, state, action.response.entities);
@@ -62,9 +63,10 @@ const pagination = combineReducers({
 
 
 const realworld = combineReducers({
-  entities,
-  pagination,
-  errorMessage
+  entities: entities,
+  pagination: pagination,
+  errorMessage: errorMessage
 })
+
 
 export default realworld;

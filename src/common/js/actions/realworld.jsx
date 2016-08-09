@@ -18,11 +18,10 @@ function fetchUser(login) {
     [CALL_API] : {
       types: [actions.USER_REQUEST, actions.USER_SUCCESS,actions.USER_FAILURE],
       endpoint: `users/${login}`,
-      schema: Schemas,USER
+      schema: Schemas.USER
     }
   }
 }
-
 /**
  * 获取从GitHub的单个用户API(被缓存的不包括)。
  * 依靠Redux thunk的中间件
@@ -30,7 +29,8 @@ function fetchUser(login) {
 
 export function loadUser(login, requiredFields = []) {
   return (dispatch, getState) => {
-    const user = getState().entities.users[login];
+    //debugger;
+    const user = getState().realworld.entities.users[login];
     if (user && requiredFields.every(key => user.hasOwnProperty(key))) {
       // statement
       return null;
@@ -65,7 +65,7 @@ function fetchRepo(fullName) {
 
 export function loadRepo(fullName, requiredFields = []) {
   return (dispatch, getState) => {
-    const repo = getState().entities.repos[fullName];
+    const repo = getState().realworld.entities.repos[fullName];
     if (repo && requiredFields.every(key => repo.hasOwnProperty(key))) {
       // statement
       return null;
@@ -94,8 +94,8 @@ export function loadStarred(login, nextPage) {
   return (dispatch, getState) => {
     const {
       nextPageUrl = `users/${login}/starred`,
-      pageCount = 0;
-    } = getState().pagination.starredByUser[login] || {};
+      pageCount = 0
+    } = getState().realworld.pagination.starredByUser[login] || {};
 
     if (pageCount > 0 && !nextPage) {
       // statement
@@ -131,7 +131,7 @@ export function loadStargazers(fullName,nextPage) {
     const {
       nextPageUrl = `repos/${fullName}/stargazers`,
       pageCount = 0
-    } = getState().pagination.stargazersByRepo[fullName] || {};
+    } = getState().realworld.pagination.stargazersByRepo[fullName] || {};
 
     if (pageCount > 0 && !nextPage) {
       // statement

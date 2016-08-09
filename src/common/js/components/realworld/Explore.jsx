@@ -2,7 +2,7 @@
  * @Author: jypblue
  * @Date:   2016-08-07 16:41:58
  * @Last Modified by:   jypblue
- * @Last Modified time: 2016-08-08 10:59:50
+ * @Last Modified time: 2016-08-08 20:10:36
  */
 
 'use strict';
@@ -10,7 +10,7 @@ import React, {
   Component,
   PropTypes
 } from 'react';
-const GITHUB_REPO = 'https://github.com/rackt/redux';
+import { Input,Button } from 'antd';
 
 export default class Explore extends Component {
 
@@ -54,12 +54,12 @@ export default class Explore extends Component {
 
   render() {
     return (
-      <div>
-        <p>请输入一个完整的用户名或者仓库名然后点击'GO'按钮：</p>
-        <input type="text" size="45" defaultVakue={this.props.value} onKeyUp={this.handleKeyUp} ref="input"/>
-        <button type="button" onClick={this.handleGoClick}>
+      <div className="search-input">
+        <p>查询github用户:</p>
+        <input type="text" className="rl-input" defaultValue={this.props.value} onKeyUp={this.handleKeyUp} ref="input"/>
+        <Button type="button" onClick={this.handleGoClick}>
         GO!
-        </button>
+        </Button>
       </div>
     )
   }

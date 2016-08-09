@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/**
+ *
+ * @authors zx.wang (zx.wang1991@gmail.com)
+ * @date    2016-08-09 21:05:54
+ * @version $Id$
+ */
+.rl-wrap{
+  margin: 20px;
+  color: #666;
+}
+.search-input{
+  border-bottom: 1px solid #dadada;
+  margin: 10px 0;
+}
+.rl-input {
+  width: 300px;
+  height: 28px;
+  border: 1px solid #dadada;
+  border-radius: 6px;
+  padding: 4px 15px;
+  margin: 5px 10px 5px 0;
+}
+
+.rl-repo .repo,
+.rl-user .user {
+  margin: 20px 0;
+  border-bottom: 1px solid #dadada;
+}
