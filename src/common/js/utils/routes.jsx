@@ -15,14 +15,41 @@ import CounterPage from "../containers/CounterPage";
 import TodoPage from "../containers/TodoPage";
 
 //realworld
-import RealWorldPage from '../containers/realworld/RealWorldPage';
+//import RealWorldPage from '../containers/realworld/RealWorldPage';
 import RepoPage from '../containers/realworld/RepoPage';
-import UserPage from '../containers/realworld/UserPage';
+//import UserPage from '../containers/realworld/UserPage';
 
 //Redux Dumb
 import HomePage from "../components/Home";
-import AboutPage from "../components/About";
+//import AboutPage from "../components/About";
 import error404 from "../components/404";
+
+import Hotel from '../components/hotelpunish/Hotel';
+
+
+
+const AboutPage = (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../components/About'))
+    },'about')
+}
+
+const UserPage =  (location, cb) => {
+    require.ensure([], require => {
+        cb(null, require('../containers/realworld/UserPage'))
+    },'userpage')
+}
+
+function RealWorldPage(location, cb){
+      require.ensure([], require => {
+        cb(null, require('../containers/realworld/RealWorldPage'))
+    },'realworld')
+}
+
+//const RepoPage = asyncload('repopage','../containers/realworld/RepoPage');
+//const RealWorldPage = asyncload('realworld','../containers/realworld/RealWorldPage');
+//const CounterPage = asyncload('counter','../containers/CounterPage');
+//const TodoPage = asyncload('todo','../containers/TodoPage');
 
 export default (
   <Route name="app" path="/" component={App}>
@@ -30,13 +57,14 @@ export default (
       <Route path="home" component={HomePage} />
       <Route path="todo" component={TodoPage} />
       <Route path="counter" component={CounterPage} />
-      <Route path="realworld" component={RealWorldPage}>
+      <Route path="realworld" getComponent={RealWorldPage}>
         <Route path="/realworld/:login/:name"
            component={RepoPage} />
         <Route path="/realworld/:login"
-           component={UserPage} />
+           getComponent={UserPage} />
       </Route>
-      <Route path="about" component={AboutPage} />
+      <Route path="hotel" component={Hotel} />
+      <Route path="about" getComponent={AboutPage} />
       <Route path="*" component={error404}/>
   </Route>
 );

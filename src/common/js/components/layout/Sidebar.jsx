@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import classNames from 'classnames';
 import { Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
-
+//require('../../../fonts/iconfont.css');
 
 class Sidebar extends Component {
   constructor(props,context){
@@ -32,8 +32,8 @@ class Sidebar extends Component {
           <Menu.Item key="3"><Link to="/counter"><span><Icon type="edit" /><span>Counter</span></span></Link></Menu.Item>
           <Menu.Item key="4"><Link to="/realworld"><span><Icon type="github" /></span><span>RealWorld</span></Link></Menu.Item>
           <Menu.Item key="5"><Link to="/about"><span><Icon type="question-circle" /><span>About</span></span></Link></Menu.Item>
-          <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>导航二</span></span>}>
-            <Menu.Item key="6">选项6</Menu.Item>
+          <SubMenu key="sub2" title={<span><Icon type="team" /><span>酒店</span></span>}>
+            <Menu.Item key="6"><Link to="/hotel"><span><i className="iconfont icon-hotel"style={{marginRight: 8}}></i></span><span>Hotel</span></Link></Menu.Item>
             <SubMenu key="sub3" title="三级导航">
               <Menu.Item key="7">选项7</Menu.Item>
               <Menu.Item key="8">选项8</Menu.Item>

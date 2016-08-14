@@ -2,7 +2,7 @@
  * @Author: jypblue
  * @Date:   2016-08-03 10:53:58
  * @Last Modified by:   jypblue
- * @Last Modified time: 2016-08-03 11:14:52
+ * @Last Modified time: 2016-08-10 12:43:06
  */
 
 'use strict';
@@ -14,7 +14,7 @@ const colors = require('colors');
 const webpackconf = require('./webpack.config.js');
 
 const src = process.cwd() + '/src';
-const dist = process.cwd() + 'dist';
+const dist = process.cwd() + '/dist';
 
 //eslint check
 gulp.task('lint', () => {

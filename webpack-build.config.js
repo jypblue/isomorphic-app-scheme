@@ -11,7 +11,7 @@ const fs = require('fs');
 const webpack = require('webpack');
 const glob = require('glob');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
@@ -55,7 +55,7 @@ module.exports = (options) => {
     plugins.push(extractCSS, new webpack.HotModuleReplacementPlugin());
   } else {
     extractCSS = new ExtractTextPlugin('css/[name].css', {
-      allChunks: false
+      allChunks: true
     });
 
     cssLoader = extractCSS.extract('style', ['css?minimize']);
@@ -89,13 +89,15 @@ module.exports = (options) => {
     devtool: devtool,
     entry: Object.assign(entries, {
       //将用到的公共库，加进vender中单独提取打包
-      'vender': ['react', 'react-dom']
+      'vender': ['react', 'react-dom', 'redux', 'react-router', 'react-router-redux',
+        'history'
+      ]
     }),
 
     output: {
       path: dist,
       filename: 'js/[name].js',
-      chunkFilename: 'js/chunk.js',
+      chunkFilename: 'js/[name].chunk.js',
       hotUpdateChunkFilename: 'js/[id].js',
       publicPath: publicPath
     },
@@ -135,7 +137,8 @@ module.exports = (options) => {
             plugins: [
               ['antd', {
                 'style': 'css'
-              }]
+              }],
+              "add-module-exports"
             ]
           },
           exclude: /node_modules/
@@ -153,7 +156,7 @@ module.exports = (options) => {
     ].concat(plugins),
 
     devServer: {
-      hot: true,
+      //hot: true,
       noInfo: false,
       inline: true,
       publicPath: publicPath,

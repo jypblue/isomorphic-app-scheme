@@ -101,6 +101,8 @@ app.get('/*', function(req, res) {
       if (err) {
         console.error(err);
         return res.status(500).end('Internal server error');
+      } else if (redirectLocation) {
+        res.redirect(302, redirectLocation.pathname + redirectLocation.search)
       }
 
       if (!renderProps) {
@@ -117,7 +119,7 @@ app.get('/*', function(req, res) {
         .then(html => {
           const componentHTML = renderToString(InitialView);
           const initialState = store.getState();
-          res.status(200).end(renderFullPage(componentHTML, initialState))
+          res.status(200).send(renderFullPage(componentHTML, initialState))
         })
         .catch(err => {
           console.log(err)

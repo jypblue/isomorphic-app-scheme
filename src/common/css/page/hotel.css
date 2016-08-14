@@ -1,0 +1,47 @@
+@charset "UTF-8";
+/**
+ *
+ * @authors zx.wang (zx.wang1991@gmail.com)
+ * @date    2016-08-11 17:37:56
+ * @version $Id$
+ */
+.hotel-tabs-toggle span.tit{
+  margin-right: 20px;
+}
+.hotel-wrap {
+  display: none;
+}
+.hide{
+  display: none
+}
+.show {
+  display: block;
+}
+
+.tabTitleWrap:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.tabTitleWrap li{
+  float: left;
+  text-align: center;
+  width: 33.3%;
+  box-sizing: border-box;
+  padding: 4px 8px;
+  border-bottom:1px solid #ddd;
+  margin: 4px 0;
+}
+.tabTitleWrap li.active{
+  border-bottom: 1px solid #2db7f5;
+}
+.tabItemWrap{
+  width: 100%;
+  padding-top: 20px;
+}
+.tabItem{
+  display: none;
+}
+.show{
+  display: block;
+}
