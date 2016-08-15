@@ -27,8 +27,6 @@ import createLocation from 'history/lib/createLocation';
 import {
   syncHistoryWithStore
 } from 'react-router-redux';
-require('object-assign');
-
 import {
   fetchComponentDataBeforeRender
 } from '../common/js/api/fetchComponentDataBeforeRender';
@@ -91,7 +89,7 @@ app.get('/*', function(req, res) {
       user: user,
       version: "1.0.0"
     });
-    const history = syncHistoryWithStore(memoryHistory, store)
+    const history = createMemoryHistory(memoryHistory, store)
 
     match({
       history,
@@ -130,6 +128,7 @@ app.get('/*', function(req, res) {
 
   });
 });
+
 
 const server = app.listen(3002, () => {
   console.log('App listening at:3002'.info);

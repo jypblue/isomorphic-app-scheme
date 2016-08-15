@@ -5,4 +5,4 @@
  * @version $Id$
  */
 require('babel-register');
-require('./serverh');
+require('./server');

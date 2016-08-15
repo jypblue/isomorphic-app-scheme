@@ -85,6 +85,7 @@ module.exports = (options) => {
 
   };
   let devtool = dev ? 'inline-source-map' : 'source-map';
+
   let config = {
     devtool: devtool,
     entry: Object.assign(entries, {
@@ -142,6 +143,10 @@ module.exports = (options) => {
             ]
           },
           exclude: /node_modules/
+        }, {
+          test: /utils\/\.(js|jsx)$/,
+          include: path.resolve(__dirname, 'src'),
+          loaders: ['bundle?lazy', 'babel']
         }
       ]
     },
