@@ -21,17 +21,16 @@ import UserPage from '../containers/realworld/UserPage';
 
 //Redux Dumb
 import HomePage from "../components/Home";
-import AboutPage from "../components/About";
+//import AboutPage from "../components/About";
 import error404 from "../components/404";
-
 import Hotel from '../components/hotelpunish/Hotel';
 
-
-// const AboutPage = (location, cb) => {
-//     require.ensure([], require => {
-//       cb(null, require('../components/About'))
-//     },'about')
-// }
+const AboutPage = (location, cb) => {
+  if (typeof require.ensure !== 'function') require.ensure = (d, c) => c(require);
+    require.ensure([], require => {
+      cb(null, require('../components/About'))
+    },'about')
+}
 
 
 
@@ -48,40 +47,10 @@ export default (
            component={UserPage} />
       </Route>
       <Route path="hotel" component={Hotel} />
-      <Route path="about" component={AboutPage} />
+      <Route path="about" getComponent={AboutPage} />
       <Route path="*" component={error404}/>
   </Route>
 );
-
-function loadComponent(module) {
-  return !process.env.NODE_ENV
-    ? lazyLoadComponent(module)
-    : (location, cb) => cb(null, module);
-}
-
-function lazyLoadComponent(lazyModule) {
-  return (location, cb) => {
-    lazyModule(module => cb(null, module))
-  }
-}
-
-function lazyLoadComponents(lazyModules) {
-  return (location, cb) => {
-    const moduleKeys = Object.keys(lazyModules);
-    const promises = moduleKeys.map(key =>
-      new Promise(resolve => lazyModules[key](resolve))
-    )
-
-    Promise.all(promises).then(modules => {
-      cb(null, modules.reduce((obj, module, i) => {
-        obj[moduleKeys[i]] = module;
-        return obj;
-      }, {}))
-    })
-  }
-}
-
-
 
 
 
